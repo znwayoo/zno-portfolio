@@ -33,6 +33,7 @@ const milestones = [
 
 export function Timeline() {
     const containerRef = useRef<HTMLDivElement>(null);
+
     const { scrollYProgress } = useScroll({
         target: containerRef,
         offset: ["start end", "end start"],
@@ -41,8 +42,10 @@ export function Timeline() {
     const pathLength = useTransform(scrollYProgress, [0, 0.8], [0, 1]);
 
     return (
-        <div ref={containerRef} className="relative max-w-3xl mx-auto py-20 px-4">
-            <h2 className="text-3xl md:text-4xl font-bold mb-16 text-center">Career Outline</h2>
+        <div ref={containerRef} className="relative max-w-3xl mx-auto py-10 px-4">
+            <h2 className="text-3xl md:text-4xl font-bold mb-16 text-center text-foreground">
+                Career Outline
+            </h2>
 
             <div className="relative">
                 {/* Animated Line */}

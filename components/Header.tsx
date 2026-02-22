@@ -37,8 +37,8 @@ export function Header() {
                             key={link.href}
                             href={link.href}
                             className={`text-sm transition-colors hover:text-blue-600 dark:hover:text-blue-400 ${pathname === link.href
-                                    ? "text-blue-600 dark:text-blue-400 font-bold"
-                                    : "text-muted-foreground font-medium"
+                                ? "text-blue-600 dark:text-blue-400 [text-shadow:0_0_12px_rgba(37,99,235,0.6)] dark:[text-shadow:0_0_12px_rgba(96,165,250,0.6)] font-medium"
+                                : "text-muted-foreground font-medium"
                                 }`}
                         >
                             {link.label}
@@ -79,8 +79,8 @@ export function Header() {
                                 href={link.href}
                                 onClick={closeMenu}
                                 className={`text-xl transition-colors hover:text-blue-600 dark:hover:text-blue-400 ${pathname === link.href
-                                        ? "text-blue-600 dark:text-blue-400 font-bold"
-                                        : "text-foreground font-semibold"
+                                    ? "text-blue-600 dark:text-blue-400 [text-shadow:0_0_12px_rgba(37,99,235,0.6)] dark:[text-shadow:0_0_12px_rgba(96,165,250,0.6)] font-semibold"
+                                    : "text-foreground font-semibold"
                                     }`}
                             >
                                 {link.label}

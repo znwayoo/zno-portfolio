@@ -22,7 +22,6 @@ export function ProjectCard({ project }: ProjectCardProps) {
     return (
         <>
             <motion.div
-                layoutId={`card-${project.slug}`}
                 onClick={() => setIsOpen(true)}
                 className="w-full max-w-4xl mx-auto cursor-pointer group rounded-2xl overflow-hidden bg-card border shadow-sm transition-all duration-300 hover:shadow-[var(--shadow)] hover:border-accent/50"
                 whileHover={{ scale: 1.02 }}
@@ -35,15 +34,15 @@ export function ProjectCard({ project }: ProjectCardProps) {
                         fill
                         className="object-cover transition-transform duration-500 group-hover:scale-105"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-background/90 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-neutral-900/90 to-transparent" />
 
-                    <div className="absolute bottom-0 left-0 p-8 w-full">
-                        <motion.h2 layoutId={`title-${project.slug}`} className="text-3xl font-bold mb-3 text-white">
+                    <div className="absolute bottom-0 left-0 p-8 w-full z-10">
+                        <h2 className="text-3xl font-bold mb-3 text-white">
                             {title}
-                        </motion.h2>
-                        <motion.p layoutId={`excerpt-${project.slug}`} className="text-lg text-gray-200 line-clamp-2">
+                        </h2>
+                        <p className="text-lg text-gray-200 line-clamp-2">
                             {excerpt}
-                        </motion.p>
+                        </p>
                     </div>
                 </div>
 
@@ -76,7 +75,10 @@ export function ProjectCard({ project }: ProjectCardProps) {
                         />
 
                         <motion.div
-                            layoutId={`card-${project.slug}`}
+                            initial={{ opacity: 0, scale: 0.95, y: 20 }}
+                            animate={{ opacity: 1, scale: 1, y: 0 }}
+                            exit={{ opacity: 0, scale: 0.95, y: 20 }}
+                            transition={{ duration: 0.3, ease: "easeOut" }}
                             className="relative w-full max-w-4xl min-h-screen sm:min-h-[90vh] sm:my-[5vh] sm:rounded-2xl overflow-hidden bg-background border shadow-2xl z-10 flex flex-col"
                         >
                             <div className="sticky top-0 z-20 flex justify-between items-center p-4 bg-background/80 backdrop-blur-md border-b">
@@ -112,12 +114,12 @@ export function ProjectCard({ project }: ProjectCardProps) {
                             </div>
 
                             <div className="p-[var(--card-padding)] md:px-16 md:py-12 bg-background flex-grow prose prose-lg dark:prose-invert max-w-none">
-                                <motion.h1 layoutId={`title-${project.slug}`} className="text-4xl md:text-5xl font-bold mb-4">
+                                <h1 className="text-4xl md:text-5xl font-bold mb-4 text-foreground">
                                     {title}
-                                </motion.h1>
-                                <motion.p layoutId={`excerpt-${project.slug}`} className="text-xl text-muted-foreground mb-8">
+                                </h1>
+                                <p className="text-xl text-muted-foreground mb-8">
                                     {excerpt}
-                                </motion.p>
+                                </p>
 
                                 <div className="flex flex-wrap gap-2 mb-12">
                                     {tags?.map((tag) => (

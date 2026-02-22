@@ -30,7 +30,10 @@ function InsightModalContent({ insight, onClose }: { insight: InsightCardProps["
             />
 
             <motion.div
-                layoutId={`insight-${insight.slug}`}
+                initial={{ opacity: 0, scale: 0.95, y: 20 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.95, y: 20 }}
+                transition={{ duration: 0.3, ease: "easeOut" }}
                 className="relative w-full max-w-3xl h-full sm:h-[90vh] sm:my-[5vh] sm:rounded-2xl bg-background border shadow-2xl z-10 flex flex-col overflow-hidden"
             >
                 {/* Header area with progress bar */}
@@ -69,13 +72,13 @@ function InsightModalContent({ insight, onClose }: { insight: InsightCardProps["
                             )}
                         </div>
 
-                        <motion.h1 layoutId={`title-${insight.slug}`} className="text-4xl md:text-5xl font-bold mb-6">
+                        <h1 className="text-4xl md:text-5xl font-bold mb-6">
                             {title}
-                        </motion.h1>
+                        </h1>
 
-                        <motion.p layoutId={`excerpt-${insight.slug}`} className="text-xl text-muted-foreground mb-8">
+                        <p className="text-xl text-muted-foreground mb-8">
                             {excerpt}
-                        </motion.p>
+                        </p>
 
                         <div className="flex flex-wrap gap-2 mb-8 pb-8 border-b">
                             {tags?.map((tag) => (
@@ -102,7 +105,6 @@ export function InsightCard({ insight }: InsightCardProps) {
     return (
         <>
             <motion.div
-                layoutId={`insight-${insight.slug}`}
                 onClick={() => setIsOpen(true)}
                 className="w-full max-w-4xl mx-auto cursor-pointer group rounded-2xl overflow-hidden bg-card border shadow-sm transition-all duration-300 hover:shadow-[var(--shadow)] flex flex-col sm:flex-row"
                 whileHover={{ scale: 1.02 }}
@@ -135,12 +137,12 @@ export function InsightCard({ insight }: InsightCardProps) {
                                 </div>
                             )}
                         </div>
-                        <motion.h2 layoutId={`title-${insight.slug}`} className="text-2xl font-bold mb-3 group-hover:text-accent transition-colors">
+                        <h2 className="text-2xl font-bold mb-3 text-foreground">
                             {title}
-                        </motion.h2>
-                        <motion.p layoutId={`excerpt-${insight.slug}`} className="text-muted-foreground mb-6 line-clamp-2">
+                        </h2>
+                        <p className="text-muted-foreground mb-6 line-clamp-2">
                             {excerpt}
-                        </motion.p>
+                        </p>
                     </div>
 
                     <div className="flex flex-wrap gap-2">

@@ -18,7 +18,7 @@ export default async function ProjectsPage() {
                 </p>
             </div>
 
-            <div className="flex flex-col gap-12 sm:gap-16">
+            <div className="flex flex-col gap-12 sm:gap-16 animate-in fade-in slide-in-from-bottom-12 duration-700">
                 {projects.map((project) => (
                     <ProjectCard key={project.slug} project={project} />
                 ))}

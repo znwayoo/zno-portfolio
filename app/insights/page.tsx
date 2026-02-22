@@ -18,7 +18,7 @@ export default async function InsightsPage() {
                 </p>
             </div>
 
-            <div className="flex flex-col gap-8 max-w-4xl mx-auto">
+            <div className="flex flex-col gap-8 max-w-4xl mx-auto animate-in fade-in slide-in-from-bottom-12 duration-700">
                 {insights.map((insight) => (
                     <InsightCard key={insight.slug} insight={insight} />
                 ))}

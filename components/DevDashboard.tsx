@@ -22,6 +22,7 @@ export function DevDashboard({ initialFiles }: DevDashboardProps) {
 
     const editor = useEditor({
         extensions: [StarterKit],
+        immediatelyRender: false,
         content: `
 ## Example Content
 Start typing your markdown contents here...

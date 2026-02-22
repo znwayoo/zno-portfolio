@@ -1,5 +1,6 @@
 import { getAllContent } from "@/lib/content";
 import { DevDashboard } from "@/components/DevDashboard";
+import { notFound } from "next/navigation";
 
 export const metadata = {
     title: "Dashboard",
@@ -8,13 +9,8 @@ export const metadata = {
 
 export default async function DashboardPage() {
     // Client side env variable can be checked at build/runtime
-    if (process.env.NEXT_PUBLIC_DEV_ONLY !== "true") {
-        return (
-            <div className="flex h-screen items-center justify-center flex-col gap-4">
-                <h1 className="text-4xl font-bold text-destructive">403 Forbidden</h1>
-                <p className="text-muted-foreground">This page is disabled in production.</p>
-            </div>
-        );
+    if (process.env.NEXT_PUBLIC_DEV_ONLY !== "true" || process.env.NODE_ENV === "production") {
+        notFound();
     }
 
     // Load existing files so the editor can show a tree (build-time read)
