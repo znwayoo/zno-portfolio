@@ -1,0 +1,36 @@
+---
+title: "Churn Prediction Model"
+excerpt: "Machine learning model to predict customer churn with 85% accuracy using historical usage data."
+date: "2023-11-20"
+tags: ["scikit-learn", "MLflow", "PostgreSQL"]
+thumbnail: "/images/churn-thumb.jpg"
+githubUrl: "https://github.com/zarni-nway-oo/churn-model"
+---
+
+# Predictive Churn Modeling
+
+Retaining an existing customer is significantly cheaper than acquiring a new one. This project focuses on identifying "at-risk" customers before they cancel their subscriptions.
+
+## Approach
+Using historical usage patterns, support ticket frequency, and login cadence, I trained a Random Forest classifier.
+
+### Tech Stack
+- **scikit-learn** for modeling and hyperparameter tuning
+- **MLflow** for tracking experiments and model registry
+- **PostgreSQL** for feature store
+
+```sql
+-- Feature Extraction Query
+SELECT 
+    user_id,
+    COUNT(*) as total_logins,
+    MAX(event_date) as last_login,
+    EXTRACT(DAY FROM (CURRENT_DATE - MAX(event_date))) as days_since_last_login
+FROM 
+    user_events
+GROUP BY 
+    user_id;
+```
+
+## Business Impact
+By feeding the model's predictions directly back into our CRM, the Customer Success team was able to proactively reach out to at-risk accounts, saving an estimated $200k in ARR over a single quarter.

@@ -1,0 +1,40 @@
+---
+title: "Customer Analytics Dashboard"
+excerpt: "A comprehensive dashboard for measuring customer retention and engagement metrics across multiple cohorts."
+date: "2024-03-15"
+tags: ["Python", "SQL", "Tableau", "FastAPI"]
+thumbnail: "/images/analytics-thumb.jpg"
+githubUrl: "https://github.com/zarni-nway-oo/customer-analytics"
+liveUrl: "https://tableau.example.com"
+---
+
+# Customer Analytics Dashboard
+
+Understanding customer behavior is the key to improving product retention. In this project, I engineered a robust data pipeline that ingests events from multiple sources and funnels them into a unified data warehouse for analysis.
+
+## The Challenge
+Our primary challenge was dealing with disconnected data silos. Marketing data lived in HubSpot, product events in Mixpanel, and billing in Stripe. We needed a single source of truth.
+
+## The Solution
+I built a data pipeline using **Python** and **FastAPI** to extract and transform the data, loading it into a central PostgreSQL database using **SQL**. The final visualization layer was built in **Tableau**.
+
+### Key Features:
+- Real-time customer churn prediction
+- Cohort analysis by acquisition channel
+- Automated weekly reporting to stakeholders
+
+```python
+from fastapi import FastAPI
+import pandas as pd
+
+app = FastAPI()
+
+@app.get("/api/cohorts")
+def get_cohort_data():
+    # Example snippet for cohort extraction
+    df = pd.read_sql("SELECT * FROM cohorts", engine)
+    return df.to_dict(orient="records")
+```
+
+## Results
+The dashboard reduced time-to-insight for the product team from 3 days to instantaneous, directly contributing to a 15% increase in targeted customer retention campaigns.
