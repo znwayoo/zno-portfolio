@@ -1,0 +1,53 @@
+---
+title: "Human Emotion Detection Using CNN"
+excerpt: "Custom CNN architecture with 4.5M parameters for real-time facial emotion recognition across 7 categories, trained on 22K+ images with cross-dataset validation."
+date: "2024-09-15"
+tags: ["Python", "TensorFlow", "Keras", "OpenCV", "Deep Learning"]
+thumbnail: "/images/emotion-detection.svg"
+githubUrl: "https://github.com/znwayoo/Human-Emotion-Detection-Using-CNN"
+---
+
+# Human Emotion Detection Using CNN
+
+Developed a custom Convolutional Neural Network for facial emotion recognition, classifying faces into 7 emotional categories: angry, disgusted, fearful, happy, neutral, sad, and surprised.
+
+## Architecture
+
+Built a custom CNN with 4.5M parameters:
+
+- **5 convolutional layers** with progressive filter expansion (32 to 512)
+- **Batch normalization** and **dropout** (0.25) for regularization
+- **2 dense layers** with 256 and 512 neurons
+- **Learning rate scheduling** for training stability
+
+```python
+model = Sequential([
+    Conv2D(32, (3,3), activation='relu', input_shape=(48,48,1)),
+    BatchNormalization(),
+    Conv2D(64, (3,3), activation='relu'),
+    MaxPooling2D(2,2),
+    Dropout(0.25),
+    # ... progressive expansion to 512 filters
+    Dense(512, activation='relu'),
+    Dense(7, activation='softmax')
+])
+```
+
+## Training
+
+- **Dataset**: FER2013 (22K+ images) with strategic data augmentation including rotation, shifting, shearing, and flipping
+- **Training time**: ~4.5 hours
+- **Validation accuracy**: 66.43%
+- **Test accuracy**: 65.99%
+- **External validation**: 68.91% on CK+ dataset (981 images), confirming cross-dataset generalizability
+
+## Interpretability
+
+Implemented **Class Activation Maps** to visualize which facial regions the model focuses on for each emotion. Multi-metric evaluation included ROC-AUC curves and calibration analysis.
+
+### Performance by Emotion
+The model performs strongly on distinctly recognizable emotions like happiness and surprise, while struggling with more ambiguous expressions like anger vs. sadness and fear vs. neutral.
+
+## Deployment
+
+Live web application via Streamlit enables real-time emotion detection from uploaded images and webcam input, making the model accessible for demonstration and testing.

@@ -22,9 +22,9 @@ const components = {
   ul: (props: any) => <ul className="list-disc pl-6 mb-6 space-y-2" {...props} />,
   ol: (props: any) => <ol className="list-decimal pl-6 mb-6 space-y-2" {...props} />,
   li: (props: any) => <li className="text-lg" {...props} />,
-  a: (props: any) => <a className="text-accent hover:underline" {...props} />,
+  a: (props: any) => <a className="text-blue-600 dark:text-blue-400 hover:underline" {...props} />,
   blockquote: (props: any) => (
-    <blockquote className="border-l-4 border-accent pl-4 italic text-foreground/80 my-6" {...props} />
+    <blockquote className="border-l-4 border-blue-500 pl-4 italic text-foreground/80 my-6" {...props} />
   ),
   code: (props: any) => (
     <code className="bg-secondary px-1.5 py-0.5 rounded-md text-sm font-mono" {...props} />

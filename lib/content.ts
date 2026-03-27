@@ -18,15 +18,15 @@ export interface ProjectFrontmatter extends BaseFrontmatter {
     techStack?: string[];
 }
 
-export interface InsightFrontmatter extends BaseFrontmatter {
+export interface BlogFrontmatter extends BaseFrontmatter {
     readingTime?: string;
 }
 
-function getContentTypePath(type: "projects" | "insights") {
+function getContentTypePath(type: "projects" | "blog") {
     return path.join(CONTENT_DIR, type);
 }
 
-export async function getFiles(type: "projects" | "insights") {
+export async function getFiles(type: "projects" | "blog") {
     const dirPath = getContentTypePath(type);
     if (!fs.existsSync(dirPath)) {
         return [];
@@ -34,7 +34,7 @@ export async function getFiles(type: "projects" | "insights") {
     return fs.readdirSync(dirPath).filter((file) => file.endsWith(".mdx") || file.endsWith(".md"));
 }
 
-export async function getFileBySlug<T = BaseFrontmatter>(type: "projects" | "insights", slug: string) {
+export async function getFileBySlug<T = BaseFrontmatter>(type: "projects" | "blog", slug: string) {
     const dirPath = getContentTypePath(type);
 
     // Support both .mdx and .md extensions
@@ -57,7 +57,7 @@ export async function getFileBySlug<T = BaseFrontmatter>(type: "projects" | "ins
     };
 }
 
-export async function getAllContent<T extends BaseFrontmatter>(type: "projects" | "insights") {
+export async function getAllContent<T extends BaseFrontmatter>(type: "projects" | "blog") {
     const files = await getFiles(type);
 
     const entries = await Promise.all(

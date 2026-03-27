@@ -1,0 +1,65 @@
+---
+title: "Diabetes Risk Prediction"
+excerpt: "End-to-end ML solution processing 400K+ CDC records through 6 model types, achieving 84% accuracy. Deployed as both a Streamlit prototype and a full-stack Flask + React production app."
+date: "2025-01-20"
+tags: ["Python", "scikit-learn", "Flask", "React", "Streamlit", "SHAP"]
+thumbnail: "/images/diabetes-prediction.svg"
+githubUrl: "https://github.com/znwayoo/Predicting-Diabetes-Risks"
+liveUrl: "https://ml-doctor-frontend.onrender.com/"
+---
+
+# Diabetes Risk Prediction: From Data Pipeline to Production App
+
+Built a multi-stage data pipeline processing 400K+ CDC BRFSS records through data cleaning, feature engineering, statistical analysis, and predictive modeling, then deployed the results as two client-facing applications.
+
+## The Pipeline
+
+Starting from 433,323 records with 350 variables, I reduced the feature space to 14 key predictors through systematic feature selection, removing columns with 60-95% missing values and applying domain-driven feature engineering.
+
+### Data Processing
+- Cleaned and standardized raw CDC BRFSS 2023 survey data
+- Applied SMOTE for class imbalance handling
+- Used StandardScaler for feature normalization
+
+### Model Training & Evaluation
+
+Trained and evaluated 6 model types:
+
+| Model | Accuracy | Recall |
+|-------|----------|--------|
+| KNN | **0.84** | **0.93** |
+| XGBoost | 0.83 | 0.89 |
+| LightGBM | 0.83 | 0.88 |
+| Random Forest | 0.82 | 0.87 |
+| Logistic Regression | 0.81 | 0.86 |
+| Decision Tree | 0.78 | 0.82 |
+
+### Model Interpretability
+
+Applied SHAP (SHapley Additive exPlanations) for model interpretability. Key finding: **high blood pressure is the strongest predictor** of diabetes risk.
+
+## Deployment
+
+### Streamlit Prototype
+Rapid prototype for stakeholder feedback and early validation: [diabetic-doctor-zno.streamlit.app](https://diabetic-doctor-zno.streamlit.app/)
+
+### Full-Stack Production App
+Flask backend with React.js + TailwindCSS frontend for production use: [ml-doctor-frontend.onrender.com](https://ml-doctor-frontend.onrender.com/)
+
+```python
+# Flask API endpoint for prediction
+@app.route('/predict', methods=['POST'])
+def predict():
+    data = request.get_json()
+    features = preprocess(data)
+    prediction = model.predict(features)
+    shap_values = explainer(features)
+    return jsonify({
+        'risk': prediction[0],
+        'feature_importance': shap_values
+    })
+```
+
+## Impact
+
+The project demonstrates how data science can make healthcare insights accessible to non-technical users through interactive decision-support tools, while maintaining transparency through SHAP-based explanations.

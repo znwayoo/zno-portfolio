@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" fill="none">
+  <defs>
+    <linearGradient id="bg2" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#0c1222"/>
+      <stop offset="100%" stop-color="#1a1a2e"/>
+    </linearGradient>
+    <linearGradient id="green2" x1="0" y1="0" x2="1" y2="0" gradientUnits="objectBoundingBox">
+      <stop offset="0%" stop-color="#10b981"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+    <linearGradient id="purple2" x1="0" y1="0" x2="1" y2="0" gradientUnits="objectBoundingBox">
+      <stop offset="0%" stop-color="#8b5cf6"/>
+      <stop offset="100%" stop-color="#6d28d9"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg2)"/>
+  <!-- Title -->
+  <text x="600" y="55" fill="#f1f5f9" font-family="system-ui" font-size="32" font-weight="700" text-anchor="middle">Diabetes Risk Prediction</text>
+  <text x="600" y="88" fill="#94a3b8" font-family="system-ui" font-size="18" text-anchor="middle">400K+ CDC Records | 6 ML Models | Flask + React Deployment</text>
+  <!-- Left side: Pipeline diagram -->
+  <g transform="translate(60, 130)">
+    <text x="220" y="0" fill="#cbd5e1" font-family="system-ui" font-size="16" font-weight="600" text-anchor="middle">Data Pipeline</text>
+    <!-- Pipeline boxes -->
+    <rect x="80" y="20" width="280" height="44" rx="8" fill="#1e1e3a" stroke="#8b5cf6" stroke-width="1.5"/>
+    <text x="220" y="48" fill="#c4b5fd" font-family="system-ui" font-size="14" text-anchor="middle">433K Raw Records (350 vars)</text>
+    <line x1="220" y1="64" x2="220" y2="82" stroke="#6d28d9" stroke-width="1.5" stroke-dasharray="4,3"/>
+    <rect x="80" y="82" width="280" height="44" rx="8" fill="#1e1e3a" stroke="#8b5cf6" stroke-width="1.5"/>
+    <text x="220" y="110" fill="#c4b5fd" font-family="system-ui" font-size="14" text-anchor="middle">Cleaning + Feature Engineering</text>
+    <line x1="220" y1="126" x2="220" y2="144" stroke="#6d28d9" stroke-width="1.5" stroke-dasharray="4,3"/>
+    <rect x="80" y="144" width="280" height="44" rx="8" fill="#1e1e3a" stroke="#8b5cf6" stroke-width="1.5"/>
+    <text x="220" y="172" fill="#c4b5fd" font-family="system-ui" font-size="14" text-anchor="middle">14 Key Predictors + SMOTE</text>
+    <line x1="220" y1="188" x2="220" y2="206" stroke="#6d28d9" stroke-width="1.5" stroke-dasharray="4,3"/>
+    <rect x="80" y="206" width="280" height="44" rx="8" fill="#1e1e3a" stroke="#8b5cf6" stroke-width="1.5"/>
+    <text x="220" y="234" fill="#c4b5fd" font-family="system-ui" font-size="14" text-anchor="middle">6 Model Training + SHAP</text>
+    <line x1="220" y1="250" x2="220" y2="268" stroke="#6d28d9" stroke-width="1.5" stroke-dasharray="4,3"/>
+    <rect x="80" y="268" width="280" height="44" rx="8" fill="#1e1e3a" stroke="#10b981" stroke-width="1.5"/>
+    <text x="220" y="296" fill="#6ee7b7" font-family="system-ui" font-size="14" text-anchor="middle">Streamlit + Flask/React Apps</text>
+    <!-- Arrow labels -->
+    <text x="350" y="55" fill="#64748b" font-family="system-ui" font-size="10" font-style="italic">raw data</text>
+    <text x="350" y="117" fill="#64748b" font-family="system-ui" font-size="10" font-style="italic">cleaned</text>
+    <text x="350" y="179" fill="#64748b" font-family="system-ui" font-size="10" font-style="italic">features</text>
+    <text x="350" y="241" fill="#64748b" font-family="system-ui" font-size="10" font-style="italic">best model</text>
+  </g>
+  <!-- Right side: Model performance bars -->
+  <g transform="translate(600, 130)">
+    <text x="280" y="0" fill="#cbd5e1" font-family="system-ui" font-size="16" font-weight="600" text-anchor="middle">Model Accuracy Comparison</text>
+    <!-- KNN -->
+    <text x="100" y="48" fill="#e2e8f0" font-family="system-ui" font-size="14" text-anchor="end">KNN</text>
+    <rect x="110" y="35" width="380" height="22" rx="4" fill="#1e1e3a"/>
+    <rect x="110" y="35" width="319" height="22" rx="4" fill="url(#green2)" opacity="0.85"/>
+    <text x="440" y="51" fill="#f1f5f9" font-family="system-ui" font-size="13" font-weight="600">0.84</text>
+    <!-- XGBoost -->
+    <text x="100" y="88" fill="#e2e8f0" font-family="system-ui" font-size="14" text-anchor="end">XGBoost</text>
+    <rect x="110" y="75" width="380" height="22" rx="4" fill="#1e1e3a"/>
+    <rect x="110" y="75" width="315" height="22" rx="4" fill="url(#purple2)" opacity="0.75"/>
+    <text x="436" y="91" fill="#f1f5f9" font-family="system-ui" font-size="13" font-weight="600">0.83</text>
+    <!-- LightGBM -->
+    <text x="100" y="128" fill="#e2e8f0" font-family="system-ui" font-size="14" text-anchor="end">LightGBM</text>
+    <rect x="110" y="115" width="380" height="22" rx="4" fill="#1e1e3a"/>
+    <rect x="110" y="115" width="315" height="22" rx="4" fill="url(#purple2)" opacity="0.7"/>
+    <text x="436" y="131" fill="#f1f5f9" font-family="system-ui" font-size="13" font-weight="600">0.83</text>
+    <!-- Random Forest -->
+    <text x="100" y="168" fill="#e2e8f0" font-family="system-ui" font-size="14" text-anchor="end">Random Forest</text>
+    <rect x="110" y="155" width="380" height="22" rx="4" fill="#1e1e3a"/>
+    <rect x="110" y="155" width="311" height="22" rx="4" fill="url(#purple2)" opacity="0.65"/>
+    <text x="432" y="171" fill="#f1f5f9" font-family="system-ui" font-size="13" font-weight="600">0.82</text>
+    <!-- Logistic Regression -->
+    <text x="100" y="208" fill="#e2e8f0" font-family="system-ui" font-size="14" text-anchor="end">Logistic Reg.</text>
+    <rect x="110" y="195" width="380" height="22" rx="4" fill="#1e1e3a"/>
+    <rect x="110" y="195" width="308" height="22" rx="4" fill="url(#purple2)" opacity="0.6"/>
+    <text x="428" y="211" fill="#f1f5f9" font-family="system-ui" font-size="13" font-weight="600">0.81</text>
+    <!-- Decision Tree -->
+    <text x="100" y="248" fill="#e2e8f0" font-family="system-ui" font-size="14" text-anchor="end">Decision Tree</text>
+    <rect x="110" y="235" width="380" height="22" rx="4" fill="#1e1e3a"/>
+    <rect x="110" y="235" width="296" height="22" rx="4" fill="url(#purple2)" opacity="0.55"/>
+    <text x="416" y="251" fill="#f1f5f9" font-family="system-ui" font-size="13" font-weight="600">0.78</text>
+    <!-- SHAP insight box -->
+    <rect x="60" y="290" width="440" height="60" rx="12" fill="#1e1e3a" stroke="#10b981" stroke-width="1.5"/>
+    <text x="280" y="318" fill="#10b981" font-family="system-ui" font-size="15" font-weight="600" text-anchor="middle">Top Predictor: High Blood Pressure</text>
+    <text x="280" y="338" fill="#94a3b8" font-family="system-ui" font-size="12" text-anchor="middle">Identified via SHAP feature importance analysis</text>
+  </g>
+</svg>

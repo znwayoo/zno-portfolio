@@ -19,11 +19,11 @@ export const metadata: Metadata = {
     default: "Zarni Nway Oo | Data Professional",
     template: "%s | Zarni Nway Oo",
   },
-  description: "Portfolio showcasing data projects, insights, and analytics engineering.",
+  description: "Forbes 30 Under 30 Asia. Business leader turned data professional. MSc Business Analytics at UCD Smurfit. Portfolio showcasing data science, ML, and analytics projects.",
   openGraph: {
     title: "Zarni Nway Oo | Data Professional",
-    description: "Modern portfolio for data projects and analytics engineering.",
-    url: "https://zarni-nway-oo.github.io",
+    description: "Forbes 30 Under 30 Asia. Business leader turned data professional bridging strategy with data science.",
+    url: "https://znwayoo.github.io",
     siteName: "Zarni Nway Oo Portfolio",
     locale: "en_US",
     type: "website",
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Zarni Nway Oo | Data Professional",
-    description: "Portfolio showcasing data projects and insights.",
+    description: "Portfolio showcasing data projects and blog.",
   },
 };
 

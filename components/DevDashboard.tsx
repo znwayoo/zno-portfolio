@@ -10,7 +10,7 @@ import { Download, FileText, Image as ImageIcon } from "lucide-react";
 interface DevDashboardProps {
     initialFiles: {
         projects: { slug: string; title: string }[];
-        insights: { slug: string; title: string }[];
+        blog: { slug: string; title: string }[];
     };
 }
 
@@ -82,9 +82,9 @@ thumbnail: "${thumbnail}"
                             </ul>
                         </div>
                         <div>
-                            <h3 className="text-sm font-semibold text-muted-foreground mb-2">/content/insights</h3>
+                            <h3 className="text-sm font-semibold text-muted-foreground mb-2">/content/blog</h3>
                             <ul className="space-y-1 text-sm pl-4 border-l">
-                                {initialFiles.insights.map((i) => (
+                                {initialFiles.blog.map((i) => (
                                     <li key={i.slug} className="text-muted-foreground hover:text-accent cursor-pointer truncate">
                                         {i.title}
                                     </li>

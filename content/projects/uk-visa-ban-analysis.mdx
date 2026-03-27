@@ -1,0 +1,46 @@
+---
+title: "UK Study Visa Ban Analysis"
+excerpt: "A data-driven investigation of the UK government's 2026 decision to restrict study visas, processing 1.2M+ rows across 8 Home Office datasets to challenge the official justification with evidence."
+date: "2026-03-15"
+tags: ["Python", "pandas", "Tableau", "ETL", "Policy Analytics"]
+thumbnail: "/images/uk-visa-analysis.svg"
+githubUrl: "https://github.com/znwayoo/uk-study-visa-ban-analysis"
+liveUrl: "https://public.tableau.com/app/profile/zarni.nway.oo6272/viz/asy01/UKStudyVisaBanWhattheDataActuallyShows"
+---
+
+# UK Study Visa Ban: What the Data Actually Shows
+
+In March 2026, the UK government restricted study visas for nationals of Afghanistan, Cameroon, Myanmar, and Sudan, citing a 470% growth in asylum claims from student visa holders. I built a modular ETL pipeline to test that claim against the government's own data.
+
+## The Challenge
+
+The government's justification rested on a single statistic that could not be verified from published Home Office tables, which do not release nationality and route data in the same dataset. I needed to process 1.2M+ rows across 8 separate datasets to reconstruct the full picture.
+
+## Technical Approach
+
+I designed a structured ETL architecture with separate config, loaders, cleaners, transformers, and exporters modules, enabling reproducible analysis across multiple data sources.
+
+```
+etl/
+  config/       # Dataset paths, column mappings, parameters
+  loaders/      # Raw data ingestion from Excel/CSV
+  cleaners/     # Missing values, type casting, standardization
+  transformers/ # Feature engineering, aggregation, cross-dataset joins
+  exporters/    # Clean output for Tableau and notebooks
+```
+
+### Tech Stack
+- **Python 3.12** with pandas, NumPy, matplotlib, seaborn
+- **Jupyter Notebooks** for exploratory analysis and presentation
+- **Tableau Public** for interactive dashboard visualization
+
+## Key Findings
+
+- **Unverifiable claim**: The cited 470% growth cannot be verified from published Home Office tables
+- **Declining trend**: Study visa asylum claims peaked at 15,939 in 2024 but decreased 21% to 12,578 in 2025, before the ban took effect
+- **Asymmetric impact**: Afghanistan and Sudan show 30:1 ratios of asylum claims to student visa grants, while Myanmar received more student visa grants (1,690) than asylum claims (879)
+- **Limited scope**: The four banned countries account for only 19.8% of the study-to-asylum pipeline
+
+## Output
+
+Produced 30+ analytical tables and an interactive Tableau dashboard translating complex immigration statistics into clear, evidence-based findings that challenge the government's stated justification.

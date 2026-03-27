@@ -4,7 +4,7 @@ import { Timeline } from "@/components/Timeline";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import Image from "next/image";
-import { FaGithub, FaLinkedinIn, FaEnvelope, FaXTwitter } from "react-icons/fa6";
+import { FaGithub, FaLinkedinIn, FaEnvelope } from "react-icons/fa6";
 
 export default function Home() {
   const scrollToTimeline = () => {
@@ -30,24 +30,23 @@ export default function Home() {
         <h1 className="text-5xl md:text-7xl font-bold leading-tight tracking-tight mb-6">
           Zarni Nway Oo
         </h1>
-        <p className="text-lg md:text-xl text-muted-foreground font-medium mb-8 max-w-2xl">
-          Data Professional | Analytics Engineer
+        <p className="text-lg md:text-xl text-muted-foreground font-medium mb-4 max-w-2xl">
+          Business Leader Turned Data Professional
+        </p>
+        <p className="text-sm md:text-base text-muted-foreground mb-8 max-w-2xl leading-relaxed">
+          Forbes 30 Under 30 Asia. MSc Business Analytics at UCD Smurfit. Bridging business strategy with data science to drive real-world transformation.
         </p>
 
         <div className="flex items-center gap-6 mb-12">
-          <Link href="https://linkedin.com/in/" target="_blank" className="p-3 bg-secondary rounded-xl hover:bg-accent hover:text-white transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
+          <Link href="https://linkedin.com/in/zarninwayoo" target="_blank" className="p-3 bg-secondary rounded-xl hover:bg-accent hover:text-white transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
             <FaLinkedinIn className="w-6 h-6" />
             <span className="sr-only">LinkedIn</span>
           </Link>
-          <Link href="https://github.com/zarni-nway-oo" target="_blank" className="p-3 bg-secondary rounded-xl hover:bg-accent hover:text-white transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
+          <Link href="https://github.com/znwayoo" target="_blank" className="p-3 bg-secondary rounded-xl hover:bg-accent hover:text-white transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
             <FaGithub className="w-6 h-6" />
             <span className="sr-only">GitHub</span>
           </Link>
-          <Link href="https://twitter.com" target="_blank" className="p-3 bg-secondary rounded-xl hover:bg-accent hover:text-white transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
-            <FaXTwitter className="w-6 h-6" />
-            <span className="sr-only">X (Twitter)</span>
-          </Link>
-          <Link href="mailto:example@example.com" className="p-3 bg-secondary rounded-xl hover:bg-accent hover:text-white transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
+          <Link href="mailto:znwayooo@gmail.com" className="p-3 bg-secondary rounded-xl hover:bg-accent hover:text-white transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
             <FaEnvelope className="w-6 h-6" />
             <span className="sr-only">Email</span>
           </Link>
@@ -64,7 +63,7 @@ export default function Home() {
       </section>
 
       {/* Timeline Section */}
-      <section id="timeline" className="w-full bg-secondary/30 border-t py-20 pb-32">
+      <section id="timeline" className="w-full bg-secondary/30 border-t py-20">
         <Timeline />
       </section>
     </div>

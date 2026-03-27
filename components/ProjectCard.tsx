@@ -23,43 +23,40 @@ export function ProjectCard({ project }: ProjectCardProps) {
         <>
             <motion.div
                 onClick={() => setIsOpen(true)}
-                className="w-full max-w-4xl mx-auto cursor-pointer group rounded-2xl overflow-hidden bg-card border shadow-sm transition-all duration-300 hover:shadow-[var(--shadow)] hover:border-accent/50"
+                className="w-full max-w-4xl mx-auto cursor-pointer group rounded-2xl overflow-hidden bg-card border shadow-sm transition-all duration-300 hover:shadow-[var(--shadow)] hover:border-blue-500/50"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
             >
-                <div className="relative w-full h-80 sm:h-96 overflow-hidden">
+                <div className="relative w-full aspect-video overflow-hidden bg-neutral-950">
                     <Image
                         src={thumbnail || "/images/placeholder.jpg"}
                         alt={title}
                         fill
-                        className="object-cover transition-transform duration-500 group-hover:scale-105"
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 896px"
+                        className="object-contain transition-transform duration-500 group-hover:scale-105"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-neutral-900/90 to-transparent" />
+                    <div className="absolute inset-0" style={{ backgroundColor: "rgba(0,0,0,0.75)" }} />
+                    <div className="absolute inset-0 bg-gradient-to-t from-neutral-900/70 via-transparent to-transparent" />
 
-                    <div className="absolute bottom-0 left-0 p-8 w-full z-10">
-                        <h2 className="text-3xl font-bold mb-3 text-white">
+                    <div className="absolute bottom-0 left-0 p-4 sm:p-6 md:p-8 w-full z-10">
+                        <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-1 sm:mb-3 text-white">
                             {title}
                         </h2>
-                        <p className="text-lg text-gray-200 line-clamp-2">
+                        <p className="text-sm sm:text-base md:text-lg text-gray-200 line-clamp-2">
                             {excerpt}
                         </p>
                     </div>
                 </div>
 
-                <div className="p-6 bg-card/50 backdrop-blur-sm border-t flex flex-wrap gap-2">
-                    {tags?.slice(0, 3).map((tag) => (
+                <div className="p-3 sm:p-4 md:p-6 bg-card/50 backdrop-blur-sm border-t flex flex-wrap gap-1.5 sm:gap-2">
+                    {tags?.map((tag) => (
                         <span
                             key={tag}
-                            className="h-10 px-4 py-2 rounded-xl bg-secondary text-secondary-foreground text-sm font-medium whitespace-nowrap"
+                            className="px-2.5 py-1 sm:px-4 sm:py-2 rounded-lg sm:rounded-xl bg-secondary text-secondary-foreground text-xs sm:text-sm font-medium whitespace-nowrap"
                         >
                             {tag}
                         </span>
                     ))}
-                    {tags && tags.length > 3 && (
-                        <span className="h-10 px-4 py-2 rounded-xl bg-secondary/50 text-secondary-foreground text-sm font-medium">
-                            +{tags.length - 3}
-                        </span>
-                    )}
                 </div>
             </motion.div>
 
@@ -79,60 +76,61 @@ export function ProjectCard({ project }: ProjectCardProps) {
                             animate={{ opacity: 1, scale: 1, y: 0 }}
                             exit={{ opacity: 0, scale: 0.95, y: 20 }}
                             transition={{ duration: 0.3, ease: "easeOut" }}
-                            className="relative w-full max-w-4xl min-h-screen sm:min-h-[90vh] sm:my-[5vh] sm:rounded-2xl overflow-hidden bg-background border shadow-2xl z-10 flex flex-col"
+                            className="relative w-full max-w-4xl min-h-screen sm:min-h-0 sm:my-[3vh] md:my-[5vh] sm:rounded-2xl overflow-hidden bg-background border shadow-2xl z-10 flex flex-col"
                         >
-                            <div className="sticky top-0 z-20 flex justify-between items-center p-4 bg-background/80 backdrop-blur-md border-b">
-                                <div className="flex gap-4">
+                            <div className="sticky top-0 z-20 flex justify-between items-center p-3 sm:p-4 bg-background/80 backdrop-blur-md border-b">
+                                <div className="flex gap-3 sm:gap-4">
                                     {githubUrl && (
-                                        <Link href={githubUrl} target="_blank" className="flex items-center gap-2 text-sm font-medium hover:text-accent transition-colors">
-                                            <Github className="w-5 h-5" />
+                                        <Link href={githubUrl} target="_blank" className="flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm font-medium hover:text-blue-500 transition-colors">
+                                            <Github className="w-4 h-4 sm:w-5 sm:h-5" />
                                             <span className="hidden sm:inline">Source Code</span>
                                         </Link>
                                     )}
                                     {liveUrl && (
-                                        <Link href={liveUrl} target="_blank" className="flex items-center gap-2 text-sm font-medium hover:text-accent transition-colors">
-                                            <ExternalLink className="w-5 h-5" />
+                                        <Link href={liveUrl} target="_blank" className="flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm font-medium hover:text-blue-500 transition-colors">
+                                            <ExternalLink className="w-4 h-4 sm:w-5 sm:h-5" />
                                             <span className="hidden sm:inline">Live Demo</span>
                                         </Link>
                                     )}
                                 </div>
                                 <button
                                     onClick={() => setIsOpen(false)}
-                                    className="p-2 rounded-xl hover:bg-secondary transition-colors"
+                                    className="p-1.5 sm:p-2 rounded-xl hover:bg-secondary transition-colors"
                                 >
-                                    <X className="w-6 h-6" />
+                                    <X className="w-5 h-5 sm:w-6 sm:h-6" />
                                 </button>
                             </div>
 
-                            <div className="relative w-full h-64 sm:h-96 md:h-[400px] flex-shrink-0">
+                            <div className="relative w-full aspect-video flex-shrink-0 bg-neutral-950">
                                 <Image
                                     src={thumbnail || "/images/placeholder.jpg"}
                                     alt={title}
                                     fill
-                                    className="object-cover"
+                                    sizes="(max-width: 640px) 100vw, 896px"
+                                    className="object-contain"
                                 />
                             </div>
 
-                            <div className="p-[var(--card-padding)] md:px-16 md:py-12 bg-background flex-grow prose prose-lg dark:prose-invert max-w-none">
-                                <h1 className="text-4xl md:text-5xl font-bold mb-4 text-foreground">
+                            <div className="p-4 sm:p-8 md:px-16 md:py-12 bg-background flex-grow prose prose-sm sm:prose-base md:prose-lg dark:prose-invert max-w-none">
+                                <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-3 sm:mb-4 text-foreground">
                                     {title}
                                 </h1>
-                                <p className="text-xl text-muted-foreground mb-8">
+                                <p className="text-base sm:text-lg md:text-xl text-muted-foreground mb-4 sm:mb-8">
                                     {excerpt}
                                 </p>
 
-                                <div className="flex flex-wrap gap-2 mb-12">
+                                <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-8 sm:mb-12">
                                     {tags?.map((tag) => (
                                         <span
                                             key={tag}
-                                            className="px-4 py-2 rounded-lg bg-secondary text-sm font-medium"
+                                            className="px-2.5 py-1 sm:px-4 sm:py-2 rounded-lg bg-secondary text-xs sm:text-sm font-medium"
                                         >
                                             {tag}
                                         </span>
                                     ))}
                                 </div>
 
-                                <div className="mdx-content mt-8">
+                                <div className="mdx-content mt-4 sm:mt-8">
                                     {project.content}
                                 </div>
                             </div>

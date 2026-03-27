@@ -10,7 +10,7 @@ import { Button } from "./ui/button";
 const navLinks = [
     { href: "/", label: "Home" },
     { href: "/projects", label: "Projects" },
-    { href: "/insights", label: "Insights" },
+    { href: "/blog", label: "Blog" },
 ];
 
 export function Header() {
@@ -21,6 +21,7 @@ export function Header() {
     const closeMenu = () => setIsOpen(false);
 
     return (
+        <>
         <header className="sticky top-0 z-50 w-full border-b bg-background/80 backdrop-blur-sm support-[backdrop-filter]:bg-background/60">
             <div className="container max-w-[var(--container-max-w)] mx-auto px-[var(--container-padding)] flex h-16 items-center justify-between">
                 <Link href="/" className="flex items-center gap-2 group">
@@ -69,10 +70,12 @@ export function Header() {
                 </div>
             </div>
 
-            {/* Mobile Drawer */}
+        </header>
+            {/* Mobile Drawer - rendered outside header to avoid stacking context issues */}
             {isOpen && (
-                <div className="lg:hidden fixed inset-0 top-16 z-40 bg-background/95 backdrop-blur-sm border-t">
-                    <nav className="flex flex-col items-center gap-8 p-8 max-w-sm mx-auto animate-in slide-in-from-bottom-8">
+                <div className="lg:hidden fixed inset-0 top-16 z-[60]">
+                    <div className="absolute inset-0 bg-white dark:bg-neutral-950" />
+                    <nav className="relative flex flex-col items-center gap-8 p-8 max-w-sm mx-auto animate-in slide-in-from-bottom-8">
                         {navLinks.map((link) => (
                             <Link
                                 key={link.href}
@@ -80,7 +83,7 @@ export function Header() {
                                 onClick={closeMenu}
                                 className={`text-xl transition-colors hover:text-blue-600 dark:hover:text-blue-400 ${pathname === link.href
                                     ? "text-blue-600 dark:text-blue-400 [text-shadow:0_0_12px_rgba(37,99,235,0.6)] dark:[text-shadow:0_0_12px_rgba(96,165,250,0.6)] font-semibold"
-                                    : "text-foreground font-semibold"
+                                    : "text-neutral-900 dark:text-neutral-100 font-semibold"
                                     }`}
                             >
                                 {link.label}
@@ -98,6 +101,6 @@ export function Header() {
                     </nav>
                 </div>
             )}
-        </header>
+        </>
     );
 }

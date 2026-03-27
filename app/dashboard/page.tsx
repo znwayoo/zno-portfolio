@@ -15,12 +15,12 @@ export default async function DashboardPage() {
 
     // Load existing files so the editor can show a tree (build-time read)
     const projects = await getAllContent("projects");
-    const insights = await getAllContent("insights");
+    const blog = await getAllContent("blog");
 
     // Format explicitly for the client component
     const fileTree = {
         projects: projects.map((p) => ({ slug: p.slug, title: p.frontmatter.title })),
-        insights: insights.map((i) => ({ slug: i.slug, title: i.frontmatter.title })),
+        blog: blog.map((b) => ({ slug: b.slug, title: b.frontmatter.title })),
     };
 
     return <DevDashboard initialFiles={fileTree} />;
